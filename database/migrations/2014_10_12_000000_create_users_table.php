@@ -15,8 +15,9 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('first_name');
-            $table->string('last_name');
+            $table->string('first_name')->nullable(); //first name 
+            $table->string('last_name')->nullable();
+            $table->string('username')->unique();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
@@ -28,15 +29,15 @@ return new class extends Migration
             $table->string('image')->nullable();
             $table->text('profile_photo_path')->nullable();
             //foreignids 
-            $table->foreignId('country_id');
-            $table->foreignId('occupation_id');
-            $table->foreignId('group_id');
-            $table->foreignId('state_id');
-            $table->foreignId('city_id');
-            $table->foreignId('marital_status_id');
-            $table->foreignId('church_id');
-            $table->foreignId('hduhau_id');
-            $table->enum('status', ['Active', 'Inactive'])->default('Inactive');
+            $table->foreignId('country_id')->nullable();;
+            $table->foreignId('occupation_id')->nullable();;
+            $table->foreignId('group_id')->nullable();;
+            $table->foreignId('state_id')->nullable();;
+            $table->foreignId('city_id')->nullable();;
+            $table->foreignId('marital_status_id')->nullable();;
+            $table->foreignId('church_id')->nullable();;
+            $table->foreignId('hduhau_id')->nullable();;
+            $table->enum('status', ['Active', 'Inactive'])->default('Inactive')->nullable();;
             //token timestap 
             $table->rememberToken();
             $table->timestamps();
